@@ -20,7 +20,10 @@ function closeUpdate(){
 
 // Adds text to a new bullet point
 function addNew(){
-    $('ul').append('<li><p>' + $('#new-text').val() + '</p><span class="close">x</span></li>');
+    const lines = $('#new-text').val().split(/\r\n|\r|\n/).filter(line => line.trim() !== '');
+    for (let line of lines) {
+        $('ul').append('<li><p>' + line + '</p><span class="close">x</span></li>');
+    }
     $('#new-text').val('');
     //$('#new-text').toggle();
     clickUpdate();
